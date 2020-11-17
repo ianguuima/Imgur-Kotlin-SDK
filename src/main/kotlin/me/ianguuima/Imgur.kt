@@ -20,8 +20,7 @@ class Imgur(private val clientId : String) {
 
         val requestBody: RequestBody = MultipartBody.Builder()
             .setType(MultipartBody.FORM)
-            .addFormDataPart("title", "Square Logo")
-            .addFormDataPart("image", "logo-square.png",
+            .addFormDataPart("image", "${System.nanoTime()}.png",
                 RequestBody.create(
                     mediaType,
                     image
@@ -38,10 +37,26 @@ class Imgur(private val clientId : String) {
         val response = client.newCall(request).execute()
 
         if (!response.isSuccessful) {
-            throw ImgurResponseException(response.body?.string())
+            throw ImgurResponseException(response.body?.string() ?: response.message)
         }
 
         return mapper.readValue(response.body?.string(), ImageUploadResponse::class.java)
+    }
+
+    fun delete(deleteHash : String) : Boolean {
+        val request = Request.Builder()
+            .header("Authorization", "Client-ID $clientId")
+            .url("https://api.imgur.com/3/image/${deleteHash}")
+            .delete()
+            .build()
+
+        val response = client.newCall(request).execute()
+
+        if (!response.isSuccessful) {
+            throw ImgurResponseException(response.body?.string() ?: response.message)
+        }
+
+        return true
     }
 
 

@@ -30,7 +30,7 @@ class ImageData(
     ad_type : Int = 0,
     ad_url : String,
     in_gallery : Boolean,
-    deletehash : String,
+    deleteHash : String,
     name : String = "",
     link : String
 )
