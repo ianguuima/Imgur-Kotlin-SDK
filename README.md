@@ -2,7 +2,7 @@
     <img alt="logo" src="https://i.imgur.com/gX2LSsH.jpg"/>
 </div>
 
-An **SIMPLE** unofficial SDK for Imgur written in Kotlin.
+A **SIMPLE** unofficial SDK for Imgur written in Kotlin.
 
 
 ## ❔ How to use?
