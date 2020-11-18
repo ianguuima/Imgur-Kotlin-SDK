@@ -45,7 +45,7 @@ dependencies {
 
 ## 🤔 Using the SDK
 
-(Get your clientId[https://api.imgur.com/oauth2/addclient]. It's important to proceed and use the methods.
+[Get your clientId](https://api.imgur.com/oauth2/addclient). It's important to proceed and use the methods.
 
 ```kotlin
 val imgur = Imgur(
